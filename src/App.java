@@ -1,3 +1,7 @@
+import controllers.LibroController;
+import models.Book;
+import views.ViewConsoller;
+
 public class App {
     public static void main(String[] args) throws Exception {
 
@@ -34,5 +38,34 @@ public class App {
                 new Book("The Elements of Statistical Learning", 2001)
         };
 
+        ViewConsoller vC = new ViewConsoller();
+        LibroController lC = new LibroController();
+
+        vC.showMessage("Inicio");
+        vC.printPersonas(books);
+
+        vC.showMessage("Libros ordenado descendente");
+        lC.sortByNameInserciónDescentente(books);
+        vC.printPersonas(books);
+
+        vC.showMessage("Libro Buscado");
+        lC.sortByNameInserciónDescentente(books);
+        vC.printPersonas(books);
+        Book libro1 = lC.searchByName(books, "Deep Learning");
+        if (libro1 == null){
+            vC.showMessage("Libro encontrado");;
+        } else {
+            vC.showMessage("Libro no encontrado" + libro1.toString());
+        }
+
+        vC.showMessage("Libro Buscado");
+        lC.sortByNameInserciónDescentente(books);
+        vC.printPersonas(books);
+        Book libro2 = lC.searchByName(books, "Deep Learning");
+        if (libro2 == null){
+            vC.showMessage("Libro encontrado");;
+        } else {
+            vC.showMessage("Libro no encontrado" + libro2.toString());
+        }
     }
 }
